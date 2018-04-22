@@ -10,4 +10,4 @@ RUN RUN g++ -o tp_highload_server *.cpp
 
 EXPOSE 80
 
-CMD ./tp_highload_server
+CMD root/tp_highload_server
