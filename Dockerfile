@@ -8,7 +8,7 @@ ADD . root
 
 CMD ls
 
-RUN g++ -o tp_highload_server *.cpp
+RUN g++ -o tp_highload_server root/*.cpp
 
 EXPOSE 80
 
