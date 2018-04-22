@@ -6,7 +6,7 @@
 #include "FileParser.hpp"
 #include "HttpServer.hpp"
 
-ssize_t main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) {
     std::string config_directory = argv[0];
     config_directory = config_directory.empty()
         ? config::DEFAULT_CONFIG_FILE_PATH : config_directory;
