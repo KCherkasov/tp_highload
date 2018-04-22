@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER KCherkasov
 
-RUN apt-get update && apt-get install -y gcc g++
+RUN apt-get update && apt-get install -y gcc g++ zlib1g-dev
 
 ADD . root
 

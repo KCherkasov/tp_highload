@@ -28,7 +28,7 @@ bool MimeTypeMapper::extension_exists(const std::string& extension) const {
 
 const std::string& MimeTypeMapper::get_mime_type_for_extension(const std::string& extension) const {
     if (extension_exists(extension)) {
-        return _mime_map[extension];
+        return _mime_map.at(extension);
     } else {
         return UNKNOWN_MIME_TYPE;
     }

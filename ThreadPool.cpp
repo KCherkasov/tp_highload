@@ -15,7 +15,7 @@ ThreadPool::~ThreadPool() {
 
 void ThreadPool::offer_task(const thread_task_ref_t task) {
     thread_lock_t offer_lock(_task_lock);
-    _scheduled_tasks.push_back(task);
+    _scheduled_tasks.push(task);
 }
 
 void ThreadPool::thread_executor() {
@@ -44,7 +44,7 @@ bool ThreadPool::poll_task(thread_task_ref_t task) {
 void ThreadPool::on_start(const size_t& threads_count) {
     try {
         for (size_t i = 0; i < threads_count; ++i) {
-            _thread_pool.push(std::thread(
+            _thread_pool.push_back(std::thread(
                 &ThreadPool::thread_executor, this));
         }
     } catch (...) {
