@@ -9,9 +9,9 @@
 
 class FileParser {
     private:
-        std::uint_16t _port;
-        std::uint_16t _cpu_count;
-        std::uint_16t _threads_count;
+        std::uint16_t _port;
+        std::uint16_t _cpu_count;
+        std::uint16_t _threads_count;
         
         size_t _queue_size;
 
@@ -38,9 +38,9 @@ class FileParser {
         FileParser(const std::string& config_filepath);
         ~FileParser();
 
-        std::uint_16t port() const;
-        std::uint_16t cpu_count() const;
-        std::uint_16t threads_count() const;
+        std::uint16_t port() const;
+        std::uint16_t cpu_count() const;
+        std::uint16_t threads_count() const;
 
         size_t queue_size() const;
 
