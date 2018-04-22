@@ -37,14 +37,14 @@ bool ThreadPool::poll_task(thread_task_ref_t task) {
     }
     
     task = std::move(_scheduled_tasks.front());
-    _scheduled_tasks.pop_front();
+    _scheduled_tasks.pop();
     return true;
 }
 
 void ThreadPool::on_start(const size_t& threads_count) {
     try {
         for (size_t i = 0; i < threads_count; ++i) {
-            _thread_pool.push_back(std::thread(
+            _thread_pool.push(std::thread(
                 &ThreadPool::thread_executor, this));
         }
     } catch (...) {

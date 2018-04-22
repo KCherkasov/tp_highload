@@ -21,7 +21,7 @@ class ThreadPool {
         std::mutex _task_lock;
 
         std::vector<std::thread> _thread_pool;
-        std::vector<thread_task_t> _scheduled_tasks;
+        std::queue<thread_task_t> _scheduled_tasks;
 
         void on_start(const size_t& threads_count);
         void on_dispose();
