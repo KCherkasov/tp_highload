@@ -1,19 +1,9 @@
-#include <fstream>
 #include <iostream>
 
 #include "FileParser.hpp"
 #include "Config.hpp"
 
-template <class T>
-void read_property(std::ifstream& source, T& target) {
-    if (source.eof()) {
-        _is_valid = false;
-        return;
-    }
-    source >> target;
-}
-
-void parse_key(std::ifstream& source) {
+void FileParser::parse_key(std::ifstream& source) {
     std::string read_key;
     source >> read_key;
     switch (read_key) {
@@ -36,7 +26,7 @@ void parse_key(std::ifstream& source) {
             read_property(source, _threads_count);
             break;
         default:
-           is_valid = false;
+           _is_valid = false;
            std::cerr << config::UNKNOWN_KEY_ERROR << read_key << std::endl;
     }
 }
@@ -47,15 +37,15 @@ FileParser::FileParser(const std::string& config_filepath) {
 
 FileParser::~FileParser() {}
 
-std::uint_16t FileParser::port() const {
+std::uint16_t FileParser::port() const {
     return _port;
 }
 
-std::uint_16t FileParser::cpu_count() const {
+std::uint16_t FileParser::cpu_count() const {
     return _cpu_count;
 }
 
-std::uint_16t FileParser::threads_count() const {
+std::uint16_t FileParser::threads_count() const {
     return _threads_count;
 }
 

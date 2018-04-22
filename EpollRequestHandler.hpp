@@ -21,7 +21,7 @@ class EpollRequestHandler {
 
         std::map<ssize_t, HttpSession&> _sessions_pool;
 
-        std::function<void()> make_task(HttpSession& session, const epoll_event& event);
+        std::function<void()>* make_task(HttpSession& session, const epoll_event& event);
 
     public:
         EpollRequestHandler(size_t epoll_events_limit, size_t connection_timeout,

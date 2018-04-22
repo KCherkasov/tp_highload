@@ -2,6 +2,7 @@
 #define FILE_PARSER_HPP
 
 #include <cstdint>
+#include <fstream>
 #include <string>
 
 #include "Config.hpp"
@@ -21,6 +22,17 @@ class FileParser {
     
         void read(const std::string& path);
         void init_defaults();
+    
+        template <class T>
+        void read_property(std::ifstream& source, T& target) {
+            if (source.eof()) {
+                _is_valid = false;
+                return;
+            }
+            source >> target;
+        }
+
+        void parse_key(std::ifstream& source);
 
     public:
         FileParser(const std::string& config_filepath);
