@@ -25,7 +25,7 @@ void HttpSession::read() {
     }
     _request.append(read_buffer, (size_t)read_bytes_count);
     try {
-        _handle.handle(_request, _reponse_header, _requested_path, _response_body);
+        _handler.handle(_request, _response_header, _requested_path, _response_body);
     } catch (std::runtime_error) {
         return;
     }

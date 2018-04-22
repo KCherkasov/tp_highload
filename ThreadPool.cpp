@@ -3,7 +3,7 @@
 #include "ThreadPool.hpp"
 
 ThreadPool::ThreadPool(const size_t& threads_count): _stop_flag(false) {
-    on_start(std::max(threads_count, std::thread::hardware_concurrency()));
+    on_start(std::max((std::uint16_t)threads_count, std::thread::hardware_concurrency()));
 }
 
 ThreadPool::~ThreadPool() {

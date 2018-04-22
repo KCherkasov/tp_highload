@@ -43,7 +43,7 @@ void EpollRequestHandler::on_stop() {
 
 std::function<void()>* EpollRequestHandler::make_task(HttpSession& session, const epoll_event& event) {
     if (event.events & EPOLLIN) {
-        return std::make_unique<std::funcion<void()> >(
+        return std::make_unique<std::function<void()> >(
             std::bind(&HttpSession::read, &session)).get();
     }
 
