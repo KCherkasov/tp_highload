@@ -52,7 +52,7 @@ void HttpSession::get_file() {
     char read_buffer[CHUNK_SIZE];
     ssize_t read_bytes_count = 0;
     if (_file_stream.is_open()) {
-        while ((read_bytes_count = _file.readsome(read_buffer, CHUNK_SIZE)) > 0) {
+        while ((read_bytes_count = _file_stream.readsome(read_buffer, CHUNK_SIZE)) > 0) {
             write(std::string(read_buffer, (size_t)read_bytes_count));
         }
         _file_stream.close();
