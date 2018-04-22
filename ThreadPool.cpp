@@ -3,7 +3,7 @@
 #include "ThreadPool.hpp"
 
 ThreadPool::ThreadPool(const size_t& threads_count): _stop_flag(false) {
-    on_start(std::max((std::uint16_t)threads_count, std::thread::hardware_concurrency()));
+    on_start(std::max((unsigned int)threads_count, std::thread::hardware_concurrency()));
 }
 
 ThreadPool::~ThreadPool() {
@@ -15,7 +15,7 @@ ThreadPool::~ThreadPool() {
 
 void ThreadPool::offer_task(const thread_task_ref_t task) {
     thread_lock_t offer_lock(_task_lock);
-    _scheduled_tasks.push(task);
+    _scheduled_tasks.push_back(task);
 }
 
 void ThreadPool::thread_executor() {
@@ -37,7 +37,7 @@ bool ThreadPool::poll_task(thread_task_ref_t task) {
     }
     
     task = std::move(_scheduled_tasks.front());
-    _scheduled_tasks.pop();
+    _scheduled_tasks.pop_front();
     return true;
 }
 

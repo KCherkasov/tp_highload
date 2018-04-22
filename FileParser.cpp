@@ -6,7 +6,7 @@
 void FileParser::parse_key(std::ifstream& source) {
     std::string read_key;
     source >> read_key;
-    switch (read_key) {
+    switch (read_key.c_str()) {
         case config::ADDRESS:
             read_property(source, _address);
             break;
